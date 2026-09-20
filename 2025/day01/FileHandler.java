@@ -15,7 +15,7 @@ public class FileHandler {
 
     public void readFile() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.filePath))) {
-            String lineContent = null;
+            String lineContent;
             while ((lineContent = reader.readLine()) != null) {
                 this.rotations.add(lineContent);
             }

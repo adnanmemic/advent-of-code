@@ -7,21 +7,23 @@ public class Main {
 	public static void main(String[] args) {
 		String filePath = "resources/input.txt";
 		List<String> rotations;
-		FileHandling file = new FileHandling(filePath);
+		FileHandler file = new FileHandler(filePath);
 
 		try {
 			file.readFile();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error: " + e.getMessage());
+			return;
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
+			return;
 		}
 
 		rotations = file.getRotations();
-		// int lineCounter = 0;
-		// for (String rotation : rotations) {
-		// 	lineCounter++;
-		// 	System.out.println(lineCounter + ": " + rotation);
-		// }
+
+		Dial dial = new Dial(rotations, 50, 100);
+		int password = dial.getPassword();
+
+		System.out.println(password);
 	}
 }
