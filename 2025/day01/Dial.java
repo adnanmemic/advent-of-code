@@ -1,21 +1,38 @@
 import java.util.List;
 
 public class Dial {
-    private int initialPosition;
-    private int range;
-    private List<String> rotations;
+    private final int initialPosition;
+    private final int range;
 
-    public Dial(List<String> rotations, int initialPosition, int range) {
-        this.rotations = rotations;
+    /**
+     * Creates a dial with a starting position and a specified range of numbers.
+     * 
+     * @param initialPosition the starting position of the dial
+     * @param range           the range of the dial
+     * @throws IllegalArgumentException if the initial position is negative or the
+     *                                  range is not positive
+     */
+    public Dial(int initialPosition, int range) {
+        if (initialPosition < 0)
+            throw new IllegalArgumentException("initialPosition cannot be negative.");
+        if (range <= 0)
+            throw new IllegalArgumentException("range cannot be negative or zero.");
+
         this.initialPosition = initialPosition;
         this.range = range;
     }
 
-    public int getPassword() {
+    /**
+     * Calculates the password from a sequence of rotations.
+     * 
+     * @param rotations the list of rotations
+     * @return the calculated password
+     */
+    public int getPassword(List<String> rotations) {
         int currentPosition = this.initialPosition;
         int countZeros = 0;
 
-        for (String rotation : this.rotations) {
+        for (String rotation : rotations) {
             char direction = rotation.charAt(0);
             int distance = Integer.parseInt(rotation.substring(1));
 

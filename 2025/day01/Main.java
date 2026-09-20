@@ -21,9 +21,9 @@ public class Main {
 
 		rotations = file.getRotations();
 
-		Dial dial = new Dial(rotations, 50, 100);
-		int password = dial.getPassword();
+		Dial dial = new Dial(50, 100);
+		int password = dial.getPassword(rotations);
 
-		System.out.println(password);
+		System.out.println("Password: " + password);
 	}
 }
