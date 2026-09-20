@@ -1,24 +1,28 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FileHandling {
+public class FileHandler {
     private String filePath;
-    private String[] rotations;
+    private List<String> rotations;
 
-    public FileHandling(String filePath) {
+    public FileHandler(String filePath) {
         this.filePath = filePath;
-        this.rotations = null;
+        rotations = new ArrayList<>();
     }
 
     public void readFile() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.filePath))) {
             String lineContent = null;
-            int counter = 0;
             while ((lineContent = reader.readLine()) != null) {
-                this.rotations[counter] = lineContent;
-                counter++;
+                this.rotations.add(lineContent);
             }
         }
+    }
+
+    public List<String> getRotations() {
+        return this.rotations;
     }
 }
