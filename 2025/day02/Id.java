@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Id {
 
-    public String[][] idList;
+    private String[][] idList;
 
     public Id(String[] idRanges) {
         this.idList = new String[idRanges.length][2];
@@ -20,13 +20,18 @@ public class Id {
             long begin = Long.parseLong(idList[i][0]);
             long end = Long.parseLong(idList[i][1]);
 
-            for (long j = begin; j < end + 1; j++) {
+            for (long j = begin; j <= end; j++) {
                 String id = String.valueOf(j);
 
                 // Add if id has a repeated sequence
                 int idLength = id.length();
+
+                if (idLength % 2 != 0) {
+                    continue;
+                }
+
                 String substring1 = id.substring(0, idLength / 2);
-                String substring2 = id.substring(idLength / 2, idLength);
+                String substring2 = id.substring(idLength / 2);
                 if (substring1.equals(substring2)) {
                     invalidIds.add(id);
                 }
@@ -38,8 +43,8 @@ public class Id {
     public long sumOfInvalidIds(List<String> invalidIds) {
         long sum = 0;
         for (String invalidId : invalidIds) {
-            long invalidIdAsInt = Long.parseLong(invalidId);
-            sum += invalidIdAsInt;
+            long invalidIdAsLong = Long.parseLong(invalidId);
+            sum += invalidIdAsLong;
         }
         return sum;
     }
