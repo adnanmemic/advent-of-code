@@ -5,6 +5,12 @@ public class Id {
 
     private String[][] idList;
 
+    /**
+     * Creates a new ID object.
+     * 
+     * @param idRanges the array of all ID ranges.
+     * @throws IllegalArgumentException if idRanges is null or empty
+     */
     public Id(String[] idRanges) {
         if (idRanges == null || idRanges.length == 0)
             throw new IllegalArgumentException("idRanges cannot be null or empty.");
@@ -16,6 +22,12 @@ public class Id {
         }
     }
 
+    /**
+     * Creates a list of all IDs that are invalid.
+     * 
+     * @param mode the mode that specifies when an ID is invalid
+     * @return a list of all invalid IDs
+     */
     public List<String> invalidIds(String mode) {
         List<String> invalidIds = new ArrayList<>();
 
@@ -41,6 +53,12 @@ public class Id {
         return invalidIds;
     }
 
+    /**
+     * Calculates the sum of all invalid IDs.
+     * 
+     * @param invalidIds the list of all invalid IDs
+     * @return the sum of all invalid IDs
+     */
     public long sumOfInvalidIds(List<String> invalidIds) {
         if (invalidIds == null)
             throw new IllegalArgumentException("invalidIds cannot be null.");
@@ -53,12 +71,23 @@ public class Id {
         return sum;
     }
 
+    /**
+     * Checks if an ID is valid. An ID is invalid if it consists of a sequence 
+     * of digits repeated twice, i.e. 121 occurs twice in 121121.
+     * 
+     * @param id the ID to be checked
+     * @return true if the ID is valid, false otherwise
+     */
     public boolean isValid(String id) {
         boolean valid = true;
         int idLength = id.length();
+
+        // A repeated sequence is only possible if the ID length is divisible by 2
+        if (idLength % 2 != 0)
+            return true;
+
         String substring1 = id.substring(0, idLength / 2);
         String substring2 = id.substring(idLength / 2);
-
         if (substring1.equals(substring2)) {
             valid = false;
         }
@@ -66,18 +95,27 @@ public class Id {
         return valid;
     }
 
+    /**
+     * Part2: Checks if an ID is valid. An ID is invalid if it consists of a
+     * sequence of digits repeated at least twice, i.e. 121 occurs twice in
+     * 121121, 34 occurs three times in 343434 etc.
+     * 
+     * @param id the ID to be checked
+     * @return true if the ID is valid, false otherwise
+     */
     public boolean isValidP2(String id) {
         boolean valid = true;
         int idLength = id.length();
 
-        // begin with 2 because with one there is no substring
+        // begin with 2 because a sequence must be repeated at least twice
         for (int i = 2; i <= idLength; i++) {
             if (idLength % i != 0)
                 continue;
 
             int piece = idLength / i;
             int previous = piece;
-            int counter = 0;
+            int counter = 0; // counts the matches between substring1 and substring2
+
             String substring1 = id.substring(0, piece);
 
             while (previous + piece <= idLength) {
@@ -87,7 +125,7 @@ public class Id {
                 previous += piece;
             }
 
-            // i - 1 because the first substring doesn't count
+            // i - 1 because the first substring is not compared
             if (counter == i - 1) {
                 valid = false;
                 break;

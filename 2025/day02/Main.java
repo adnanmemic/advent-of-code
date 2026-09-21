@@ -28,7 +28,7 @@ public class Main {
             List<String> invalidIds = id.invalidIds(mode);
             long sum = id.sumOfInvalidIds(invalidIds);
 
-            System.out.println(sum);
+            System.out.println("Sum of all invalid IDs: " + sum);
 
         } catch (IOException e) {
             System.err.println("Error: " + e.getMessage());
