@@ -9,9 +9,11 @@ public class Main {
 
         try {
             String[] idRanges = file.readFile();
+
             Id id = new Id(idRanges);
             List<String> invalidIds = id.invalidIds();
             long sum = id.sumOfInvalidIds(invalidIds);
+
             System.out.println(sum);
 
         } catch (IOException e) {
