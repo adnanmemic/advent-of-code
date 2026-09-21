@@ -26,16 +26,12 @@ public class Id {
             for (long j = begin; j <= end; j++) {
                 String id = String.valueOf(j);
 
-                // Add if id has a repeated sequence
                 int idLength = id.length();
-
                 if (idLength % 2 != 0) {
                     continue;
                 }
-
-                String substring1 = id.substring(0, idLength / 2);
-                String substring2 = id.substring(idLength / 2);
-                if (substring1.equals(substring2)) {
+                // Add if id has a repeated sequence
+                if (!this.isValid(id)) {
                     invalidIds.add(id);
                 }
             }
@@ -53,5 +49,18 @@ public class Id {
             sum += invalidIdAsLong;
         }
         return sum;
+    }
+
+    public boolean isValid(String id) {
+        boolean valid = true;
+        int idLength = id.length();
+        String substring1 = id.substring(0, idLength / 2);
+        String substring2 = id.substring(idLength / 2);
+
+        if (substring1.equals(substring2)) {
+            valid = false;
+        }
+
+        return valid;
     }
 }
