@@ -5,17 +5,31 @@ import java.io.IOException;
 public class FileHandler {
 
     private String path;
-    private String[] idRanges;
 
-    public FileHandler (String path) {
+    /**
+     * Creates a file handler for the specified file.
+     * 
+     * @param path the path to the file
+     * @throws IllegalArgumentException if path is null or empty
+     */
+    public FileHandler(String path) {
+        if (path == null || path.strip().equals(""))
+            throw new IllegalArgumentException("path cannot be null or empty.");
+
         this.path = path;
     }
 
-    public String[] readFile () throws IOException{
+    /**
+     * Loads id ranges from the file.
+     * 
+     * @return array with id ranges
+     * @throws IOException if an I/O error occurs while reading the file
+     */
+    public String[] readFile() throws IOException {
+        String idRanges;
         try (BufferedReader file = new BufferedReader(new FileReader(path))) {
-            String content = file.readAllAsString();
-            this.idRanges = content.split(",");
+            idRanges = file.readAllAsString();
         }
-        return this.idRanges;
+        return idRanges.split(",");
     }
 }
