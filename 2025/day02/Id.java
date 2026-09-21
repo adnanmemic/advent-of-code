@@ -6,6 +6,9 @@ public class Id {
     private String[][] idList;
 
     public Id(String[] idRanges) {
+        if (idRanges == null || idRanges.length == 0)
+            throw new IllegalArgumentException("idRanges cannot be null or empty.");
+
         this.idList = new String[idRanges.length][2];
 
         for (int i = 0; i < idRanges.length; i++) {
@@ -41,6 +44,9 @@ public class Id {
     }
 
     public long sumOfInvalidIds(List<String> invalidIds) {
+        if (invalidIds == null)
+            throw new IllegalArgumentException("invalidIds cannot be null.");
+
         long sum = 0;
         for (String invalidId : invalidIds) {
             long invalidIdAsLong = Long.parseLong(invalidId);
