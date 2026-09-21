@@ -16,8 +16,6 @@ public class FileHandler {
             String content = file.readAllAsString();
             this.idRanges = content.split(",");
         }
-
         return this.idRanges;
     }
-    
 }
