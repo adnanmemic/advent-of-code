@@ -16,21 +16,26 @@ public class Id {
         }
     }
 
-    public List<String> invalidIds() {
+    public List<String> invalidIds(String mode) {
         List<String> invalidIds = new ArrayList<>();
 
         for (int i = 0; i < this.idList.length; i++) {
-            long begin = Long.parseLong(idList[i][0]);
-            long end = Long.parseLong(idList[i][1]);
+            long begin = Long.parseLong(idList[i][0]); // id range begin
+            long end = Long.parseLong(idList[i][1]); // id range end
 
             for (long j = begin; j <= end; j++) {
                 String id = String.valueOf(j);
+                boolean valid = false;
 
                 // Add if id has a repeated sequence
-                if (!this.isValid(id)) {
-                    System.out.println(invalidIds);
-                    invalidIds.add(id);
+                if (mode.equals("part1")) { // Part 1
+                    valid = this.isValid(id);
+                } else if (mode.equals("part2")) { // Part 2
+                    valid = this.isValidP2(id);
                 }
+
+                if (!valid)
+                    invalidIds.add(id);
             }
         }
         return invalidIds;
@@ -51,12 +56,25 @@ public class Id {
     public boolean isValid(String id) {
         boolean valid = true;
         int idLength = id.length();
+        String substring1 = id.substring(0, idLength / 2);
+        String substring2 = id.substring(idLength / 2);
+
+        if (substring1.equals(substring2)) {
+            valid = false;
+        }
+
+        return valid;
+    }
+
+    public boolean isValidP2(String id) {
+        boolean valid = true;
+        int idLength = id.length();
 
         // begin with 2 because with one there is no substring
         for (int i = 2; i <= idLength; i++) {
             if (idLength % i != 0)
                 continue;
-                
+
             int piece = idLength / i;
             int previous = piece;
             int counter = 0;
