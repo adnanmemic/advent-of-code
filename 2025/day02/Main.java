@@ -7,12 +7,12 @@ public class Main {
         
         // Arguments: "part1" to run part 1 and "part2" to run part 2
         if (args.length < 1) {
-            System.out.println("Error: expected at least one argument: 'part1' or 'part2'");
+            System.err.println("Error: expected at least one argument: 'part1' or 'part2'");
             return;
         }
         
         if (!args[0].equals("part1") && !args[0].equals("part2")) {
-            System.out.println("Error: expected 'part1' or 'part2', but got '" + args[0] + "'");
+            System.err.println("Error: expected 'part1' or 'part2', but got '" + args[0] + "'");
             return;
         }
         
