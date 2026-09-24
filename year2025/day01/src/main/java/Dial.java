@@ -1,5 +1,3 @@
-package day01;
-
 import java.util.List;
 
 public class Dial {
@@ -25,7 +23,8 @@ public class Dial {
     }
 
     /**
-     * Calculates the password from a sequence of rotations.
+     * Calculates the password from a sequence of rotations. The password is the
+     * number of times the dial lands exactly on zero after a rotation.
      * 
      * @param rotations the list of rotations
      * @return the calculated password
@@ -48,6 +47,42 @@ public class Dial {
                 countZeros++;
         }
 
+        return countZeros;
+    }
+
+    /**
+     * Part2: Calculates the password from a sequence of rotations. The password
+     * is the number of times the dial passes through zero during a rotation
+     * or if lands exactly on zero after a rotation.
+     * 
+     * @param rotations the list of rotations
+     * @return the calculated password
+     */
+    public int getPasswordP2(List<String> rotations) {
+        int currentPosition = this.initialPosition;
+        int countZeros = 0;
+
+        for (String rotation : rotations) {
+            char direction = rotation.charAt(0);
+            int distance = Integer.parseInt(rotation.substring(1));
+
+            while (distance != 0) {
+
+                switch (direction) {
+                    case 'R':
+                        currentPosition = (currentPosition + 1) % range;
+                        break;
+                    case 'L':
+                        currentPosition = (((currentPosition - 1) % range) + range) % range;
+                        break;
+                }
+
+                if (currentPosition == 0) {
+                    countZeros++;
+                }
+                distance--;
+            }
+        }
         return countZeros;
     }
 }

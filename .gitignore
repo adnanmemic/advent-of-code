@@ -1,6 +1,9 @@
 # IDE
 .vscode/
 .idea/
+.classpath
+.project
+.settings/
 
 # Java
 *.class
