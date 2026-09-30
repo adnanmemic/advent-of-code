@@ -30,6 +30,7 @@ public class Main {
         try {
             idRangesAsString = file.readFile();
 
+            // Since there is no other line, only the first line is used
             idRanges = idRangesAsString.get(0).split(",");
 
             Id id = new Id(idRanges);
