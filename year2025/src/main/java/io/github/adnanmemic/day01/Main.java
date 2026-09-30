@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import io.github.adnanmemic.util.FileHandler;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class Main {
 		FileHandler file = new FileHandler(filePath);
 
 		try {
-			file.readFile();
+			rotations = file.readFile();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error: " + e.getMessage());
 			return;
@@ -33,8 +35,6 @@ public class Main {
 			System.out.println("Error: " + e.getMessage());
 			return;
 		}
-
-		rotations = file.getRotations();
 
 		Dial dial = new Dial(50, 100);
 		int password = 0;

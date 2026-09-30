@@ -3,6 +3,8 @@ package io.github.adnanmemic.day02;
 import java.io.IOException;
 import java.util.List;
 
+import io.github.adnanmemic.util.FileHandler;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -22,8 +24,13 @@ public class Main {
 
         String path = "src/main/resources/day02/input.txt";
         FileHandler file = new FileHandler(path);
+        List<String> idRangesAsString; // One long string with all id Ranges
+        String[] idRanges;
+
         try {
-            String[] idRanges = file.readFile();
+            idRangesAsString = file.readFile();
+
+            idRanges = idRangesAsString.get(0).split(",");
 
             Id id = new Id(idRanges);
 

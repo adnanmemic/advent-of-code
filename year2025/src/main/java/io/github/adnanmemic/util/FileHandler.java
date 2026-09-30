@@ -1,11 +1,12 @@
-package io.github.adnanmemic.day02;
+package io.github.adnanmemic.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileHandler {
-
     private String path;
 
     /**
@@ -22,16 +23,20 @@ public class FileHandler {
     }
 
     /**
-     * Loads id ranges from the file.
+     * Loads the content from the file.
      * 
-     * @return array with id ranges
      * @throws IOException if an I/O error occurs while reading the file
      */
-    public String[] readFile() throws IOException {
-        String idRanges;
-        try (BufferedReader file = new BufferedReader(new FileReader(path))) {
-            idRanges = file.readAllAsString();
+    public List<String> readFile() throws IOException {
+        List<String> content = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.path))) {
+            String lineContent;
+            while ((lineContent = reader.readLine()) != null) {
+                content.add(lineContent);
+            }
         }
-        return idRanges.split(",");
+
+        return content;
     }
 }
