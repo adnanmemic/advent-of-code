@@ -1,3 +1,5 @@
+package io.github.adnanmemic.day01;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -18,7 +20,7 @@ public class Main {
 
         String mode = args[0];
 
-		String filePath = "src/main/resources/input.txt";
+		String filePath = "src/main/resources/day01_input.txt";
 		List<String> rotations;
 		FileHandler file = new FileHandler(filePath);
 

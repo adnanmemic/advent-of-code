@@ -1,4 +1,4 @@
-package day02;
+package io.github.adnanmemic.day02;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +20,7 @@ public class Main {
 
         String mode = args[0];
 
-        String path = "resources/input.txt";
+        String path = "src/main/resources/day02_input.txt";
         FileHandler file = new FileHandler(path);
         try {
             String[] idRanges = file.readFile();

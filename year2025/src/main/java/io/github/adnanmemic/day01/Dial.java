@@ -1,3 +1,5 @@
+package io.github.adnanmemic.day01;
+
 import java.util.List;
 
 public class Dial {

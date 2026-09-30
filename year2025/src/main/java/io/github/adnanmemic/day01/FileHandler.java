@@ -1,3 +1,5 @@
+package io.github.adnanmemic.day01;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
