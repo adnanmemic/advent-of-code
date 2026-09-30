@@ -1,4 +1,4 @@
-package day02;
+package io.github.adnanmemic.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
