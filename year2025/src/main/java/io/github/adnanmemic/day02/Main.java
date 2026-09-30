@@ -20,7 +20,7 @@ public class Main {
 
         String mode = args[0];
 
-        String path = "src/main/resources/day02_input.txt";
+        String path = "src/main/resources/day02/input.txt";
         FileHandler file = new FileHandler(path);
         try {
             String[] idRanges = file.readFile();

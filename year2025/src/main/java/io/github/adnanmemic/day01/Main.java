@@ -20,7 +20,7 @@ public class Main {
 
         String mode = args[0];
 
-		String filePath = "src/main/resources/day01_input.txt";
+		String filePath = "src/main/resources/day01/input.txt";
 		List<String> rotations;
 		FileHandler file = new FileHandler(filePath);
 
