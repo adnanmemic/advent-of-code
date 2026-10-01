@@ -10,6 +10,19 @@ public class Main {
 
     public static void main(String[] args) {
 
+		// Arguments: "part1" to run part 1 and "part2" to run part 2
+        if (args.length < 1) {
+            System.err.println("Error: expected at least one argument: 'part1' or 'part2'");
+            return;
+        }
+
+        if (!args[0].equals("part1") && !args[0].equals("part2")) {
+            System.err.println("Error: expected 'part1' or 'part2', but got '" + args[0] + "'");
+            return;
+        }
+
+        String mode = args[0];
+
         String path = "src/main/resources/day03/input.txt";
         FileHandler file = new FileHandler(path);
         List<String> banks = null;
@@ -22,11 +35,20 @@ public class Main {
             return;
         }
 
-        int maxElevatorJoltage = 0;
+        long maxElevatorJoltage = 0;
 
         for (String bank : banks) {
             Bank b = new Bank(bank);
-            maxElevatorJoltage += b.getMaxJoltage();
+
+            switch(mode) {
+                case "part1":
+                    maxElevatorJoltage += b.getMaxJoltage();
+                    break;
+
+                case "part2":
+                    maxElevatorJoltage += b.getMaxJoltagePart2();
+                    break;
+            }
         }
 
         System.out.println("Max joltage: " + maxElevatorJoltage);
