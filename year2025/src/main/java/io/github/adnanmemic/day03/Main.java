@@ -12,13 +12,23 @@ public class Main {
 
         String path = "src/main/resources/day03/input.txt";
         FileHandler file = new FileHandler(path);
-        List<String> banks;
+        List<String> banks = null;
 
         try {
             banks = file.readFile();
         }
         catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
+            return;
         }
+
+        int maxElevatorJoltage = 0;
+
+        for (String bank : banks) {
+            Bank b = new Bank(bank);
+            maxElevatorJoltage += b.getMaxJoltage();
+        }
+
+        System.out.println("Max joltage: " + maxElevatorJoltage);
     }
 }
