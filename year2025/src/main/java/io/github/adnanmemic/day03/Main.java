@@ -10,7 +10,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-		// Arguments: "part1" to run part 1 and "part2" to run part 2
         if (args.length < 1) {
             System.err.println("Error: expected at least one argument: 'part1' or 'part2'");
             return;
@@ -42,11 +41,11 @@ public class Main {
 
             switch(mode) {
                 case "part1":
-                    maxElevatorJoltage += b.getMaxJoltage();
+                    maxElevatorJoltage += b.getMaxJoltage(2);
                     break;
 
                 case "part2":
-                    maxElevatorJoltage += b.getMaxJoltagePart2();
+                    maxElevatorJoltage += b.getMaxJoltage(12);
                     break;
             }
         }
