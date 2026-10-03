@@ -23,7 +23,7 @@ public class FileHandler {
     }
 
     /**
-     * Loads the content from the file.
+     * Loads the content from the file as a list of strings.
      * 
      * @throws IOException if an I/O error occurs while reading the file
      */
@@ -34,6 +34,24 @@ public class FileHandler {
             String lineContent;
             while ((lineContent = reader.readLine()) != null) {
                 content.add(lineContent);
+            }
+        }
+
+        return content;
+    }
+
+    /**
+     * Loads the content from the file as a list of char arrays.
+     * 
+     * @throws IOException if an I/O error occurs while reading the file
+     */
+    public List<char[]> readFileAsCharArray() throws IOException {
+        List<char[]> content = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.path))) {
+            String lineContent;
+            while ((lineContent = reader.readLine()) != null) {
+                content.add(lineContent.toCharArray());
             }
         }
 
