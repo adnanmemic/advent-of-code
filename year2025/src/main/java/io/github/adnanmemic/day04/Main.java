@@ -50,7 +50,7 @@ public class Main {
             case "part2":
                 int removed;
 
-                while ((removed = grid.removeRollPaper()) != 0) {
+                while ((removed = grid.removeRollPapers()) != 0) {
                     count += removed;
                 }
 
