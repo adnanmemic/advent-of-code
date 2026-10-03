@@ -1,10 +1,9 @@
 package io.github.adnanmemic.day03;
 
-import java.io.IOException;
-import java.util.List;
-
 import io.github.adnanmemic.util.FileHandler;
 
+import java.io.IOException;
+import java.util.List;
 
 public class Main {
 
@@ -28,8 +27,7 @@ public class Main {
 
         try {
             banks = file.readFile();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
             return;
         }
@@ -39,7 +37,7 @@ public class Main {
         for (String bank : banks) {
             Bank b = new Bank(bank);
 
-            switch(mode) {
+            switch (mode) {
                 case "part1":
                     maxElevatorJoltage += b.getMaxJoltage(2);
                     break;

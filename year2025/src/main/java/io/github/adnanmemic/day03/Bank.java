@@ -11,8 +11,8 @@ public class Bank {
      */
     public Bank(String bank) {
         String[] batteriesString = bank.split("");
-        
-            this.batteries = new int[batteriesString.length];
+
+        this.batteries = new int[batteriesString.length];
         for (int i = 0; i < batteriesString.length; i++) {
             this.batteries[i] = Integer.parseInt(batteriesString[i]);
         }
