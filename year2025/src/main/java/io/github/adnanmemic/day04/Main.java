@@ -28,7 +28,7 @@ public class Main {
 
         try {
             content = file.readFileAsCharArray();
-        } catch (IOException e) {
+        } catch (IOException | IllegalArgumentException e) {
             System.err.println("Error: " + e.getMessage());
             return;
         }

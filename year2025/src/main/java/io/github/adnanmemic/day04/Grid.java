@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Grid {
 
-    private List<char[]> content;
+    private final List<char[]> content;
 
     /**
      * Creates a new grid.
@@ -24,6 +24,12 @@ public class Grid {
      * @return the number of adjacent paper rolls
      */
     public int adjacentRollPapers(int row, int column) {
+        if (row < 0 || row >= this.content.size())
+            throw new IllegalArgumentException("Row is out of range.");
+
+        if (column < 0 || column >= this.content.get(row).length)
+            throw new IllegalArgumentException("Column is out of range.");
+
         int count = 0; // counts adjacent paper rolls
 
         int minRow = row == 0 ? 0 : -1;
@@ -50,7 +56,7 @@ public class Grid {
      *
      * @return the number of removed paper rolls
      */
-    public int removeRollPaper() {
+    public int removeRollPapers() {
         List<int[]> removable = new ArrayList<>();
 
         for (int row = 0; row < content.size(); row++)
