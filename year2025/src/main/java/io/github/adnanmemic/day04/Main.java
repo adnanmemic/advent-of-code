@@ -19,7 +19,16 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // TODO: implement main logic
-        System.out.println(content); // only for testing
+        Grid pd = new Grid(content);
+        int count = 0;
+
+        for (int row = 0; row < content.size(); row++)
+            for (int column = 0; column < content.get(row).length(); column++)
+                if (content.get(row).charAt(column) == '@' 
+                        && pd.adjacentRollPapers(row, column) < 4)
+                    count++;
+
+        System.out.println("Total roll papers: " + count);
+
     }
 }
