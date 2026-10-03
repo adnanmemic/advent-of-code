@@ -8,26 +8,25 @@ public class Dial {
 
     /**
      * Creates a dial with a starting position and a specified range of numbers.
-     * 
+     *
      * @param initialPosition the starting position of the dial
-     * @param range           the range of the dial
-     * @throws IllegalArgumentException if the initial position is negative or the
-     *                                  range is not positive
+     * @param range the range of the dial
+     * @throws IllegalArgumentException if the initial position is negative or the range is not
+     *     positive
      */
     public Dial(int initialPosition, int range) {
         if (initialPosition < 0)
             throw new IllegalArgumentException("initialPosition cannot be negative.");
-        if (range <= 0)
-            throw new IllegalArgumentException("range cannot be negative or zero.");
+        if (range <= 0) throw new IllegalArgumentException("range cannot be negative or zero.");
 
         this.initialPosition = initialPosition;
         this.range = range;
     }
 
     /**
-     * Calculates the password from a sequence of rotations. The password is the
-     * number of times the dial lands exactly on zero after a rotation.
-     * 
+     * Calculates the password from a sequence of rotations. The password is the number of times the
+     * dial lands exactly on zero after a rotation.
+     *
      * @param rotations the list of rotations
      * @return the calculated password
      */
@@ -45,18 +44,17 @@ public class Dial {
                 currentPosition = (((currentPosition - distance) % range) + range) % range;
             }
 
-            if (currentPosition == 0)
-                countZeros++;
+            if (currentPosition == 0) countZeros++;
         }
 
         return countZeros;
     }
 
     /**
-     * Part2: Calculates the password from a sequence of rotations. The password
-     * is the number of times the dial passes through zero during a rotation
-     * or if lands exactly on zero after a rotation.
-     * 
+     * Part2: Calculates the password from a sequence of rotations. The password is the number of
+     * times the dial passes through zero during a rotation or if lands exactly on zero after a
+     * rotation.
+     *
      * @param rotations the list of rotations
      * @return the calculated password
      */

@@ -1,15 +1,15 @@
 package io.github.adnanmemic.day01;
 
+import io.github.adnanmemic.util.FileHandler;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import io.github.adnanmemic.util.FileHandler;
-
 public class Main {
 
-	public static void main(String[] args) {
-		// Arguments: "part1" to run part 1 and "part2" to run part 2
+    public static void main(String[] args) {
+        // Arguments: "part1" to run part 1 and "part2" to run part 2
         if (args.length < 1) {
             System.err.println("Error: expected at least one argument: 'part1' or 'part2'");
             return;
@@ -22,32 +22,32 @@ public class Main {
 
         String mode = args[0];
 
-		String filePath = "src/main/resources/day01/input.txt";
-		List<String> rotations;
-		FileHandler file = new FileHandler(filePath);
+        String filePath = "src/main/resources/day01/input.txt";
+        List<String> rotations;
+        FileHandler file = new FileHandler(filePath);
 
-		try {
-			rotations = file.readFile();
-		} catch (FileNotFoundException e) {
-			System.out.println("Error: " + e.getMessage());
-			return;
-		} catch (IOException e) {
-			System.out.println("Error: " + e.getMessage());
-			return;
-		}
+        try {
+            rotations = file.readFile();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+            return;
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+            return;
+        }
 
-		Dial dial = new Dial(50, 100);
-		int password = 0;
+        Dial dial = new Dial(50, 100);
+        int password = 0;
 
-		switch (mode) {
-			case "part1":
-				password = dial.getPassword(rotations);
-				break;
-			case "part2":
-				password = dial.getPasswordP2(rotations);
-				break;
-		}
+        switch (mode) {
+            case "part1":
+                password = dial.getPassword(rotations);
+                break;
+            case "part2":
+                password = dial.getPasswordP2(rotations);
+                break;
+        }
 
-		System.out.println("Password: " + password);
-	}
+        System.out.println("Password: " + password);
+    }
 }
