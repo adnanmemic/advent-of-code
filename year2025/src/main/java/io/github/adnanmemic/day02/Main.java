@@ -1,9 +1,9 @@
 package io.github.adnanmemic.day02;
 
+import io.github.adnanmemic.util.FileHandler;
+
 import java.io.IOException;
 import java.util.List;
-
-import io.github.adnanmemic.util.FileHandler;
 
 public class Main {
 

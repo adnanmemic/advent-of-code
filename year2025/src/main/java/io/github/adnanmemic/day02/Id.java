@@ -9,7 +9,7 @@ public class Id {
 
     /**
      * Creates a new ID object.
-     * 
+     *
      * @param idRanges the array of all ID ranges.
      * @throws IllegalArgumentException if idRanges is null or empty
      */
@@ -26,7 +26,7 @@ public class Id {
 
     /**
      * Creates a list of all IDs that are invalid.
-     * 
+     *
      * @param mode the mode that specifies when an ID is invalid
      * @return a list of all invalid IDs
      */
@@ -48,8 +48,7 @@ public class Id {
                     valid = this.isValidP2(id);
                 }
 
-                if (!valid)
-                    invalidIds.add(id);
+                if (!valid) invalidIds.add(id);
             }
         }
         return invalidIds;
@@ -57,13 +56,12 @@ public class Id {
 
     /**
      * Calculates the sum of all invalid IDs.
-     * 
+     *
      * @param invalidIds the list of all invalid IDs
      * @return the sum of all invalid IDs
      */
     public long sumOfInvalidIds(List<String> invalidIds) {
-        if (invalidIds == null)
-            throw new IllegalArgumentException("invalidIds cannot be null.");
+        if (invalidIds == null) throw new IllegalArgumentException("invalidIds cannot be null.");
 
         long sum = 0;
         for (String invalidId : invalidIds) {
@@ -74,9 +72,9 @@ public class Id {
     }
 
     /**
-     * Checks if an ID is valid. An ID is invalid if it consists of a sequence 
-     * of digits repeated twice, i.e. 121 occurs twice in 121121.
-     * 
+     * Checks if an ID is valid. An ID is invalid if it consists of a sequence of digits repeated
+     * twice, i.e. 121 occurs twice in 121121.
+     *
      * @param id the ID to be checked
      * @return true if the ID is valid, false otherwise
      */
@@ -85,8 +83,7 @@ public class Id {
         int idLength = id.length();
 
         // A repeated sequence is only possible if the ID length is divisible by 2
-        if (idLength % 2 != 0)
-            return true;
+        if (idLength % 2 != 0) return true;
 
         String substring1 = id.substring(0, idLength / 2);
         String substring2 = id.substring(idLength / 2);
@@ -98,10 +95,10 @@ public class Id {
     }
 
     /**
-     * Part2: Checks if an ID is valid. An ID is invalid if it consists of a
-     * sequence of digits repeated at least twice, i.e. 121 occurs twice in
-     * 121121, 34 occurs three times in 343434 etc.
-     * 
+     * Part2: Checks if an ID is valid. An ID is invalid if it consists of a sequence of digits
+     * repeated at least twice, i.e. 121 occurs twice in 121121, 34 occurs three times in 343434
+     * etc.
+     *
      * @param id the ID to be checked
      * @return true if the ID is valid, false otherwise
      */
@@ -111,8 +108,7 @@ public class Id {
 
         // begin with 2 because a sequence must be repeated at least twice
         for (int i = 2; i <= idLength; i++) {
-            if (idLength % i != 0)
-                continue;
+            if (idLength % i != 0) continue;
 
             int piece = idLength / i;
             int previous = piece;
@@ -122,8 +118,7 @@ public class Id {
 
             while (previous + piece <= idLength) {
                 String substring2 = id.substring(previous, previous + piece);
-                if (substring1.equals(substring2))
-                    counter++;
+                if (substring1.equals(substring2)) counter++;
                 previous += piece;
             }
 
